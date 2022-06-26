@@ -28,7 +28,7 @@ This project aims at providing a user-friendly approach to address all above iss
 
 ## Installation
 
-1. Install a julia (>=1.6.1) distribution. Add it to `$PATH` if you want to avoid manual configurations.
+1. Install a julia (>= 1.6.1) distribution. Add it to `$PATH` if you want to avoid manual configurations.
 
 2. Install a Python (3.7+) distribution. Add it to `$PATH` if you want to avoid manual configurations.
 
@@ -51,7 +51,6 @@ For relocatability, you might add the following environment variables:
 
 Then, if you call Python from Julia, `import JuliaPythonAdaptor` before you import `PythonCall`. If you call Julia from Python, `import JuliaPythonAdaptor` before you import `juliacall`.
 
-See documentations.
 
 ## I use PyCall, how to use this package?
 
