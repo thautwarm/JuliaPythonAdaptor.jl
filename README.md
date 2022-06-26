@@ -26,7 +26,7 @@ This project aims at providing a user-friendly approach to address all above iss
 
 2. Simple Python-Julia Interoperability
 
-    If your activating environment contains `julia` and `python`, you you don't need to consider details.
+    If your activating environment contains `julia` and `python`, you don't need to consider details.
 
 ## Installation
 
