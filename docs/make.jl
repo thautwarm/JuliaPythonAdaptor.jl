@@ -1,16 +1,16 @@
-using JuliaPythonAdapator
+using JuliaPythonAdaptor
 using Documenter
 
-DocMeta.setdocmeta!(JuliaPythonAdapator, :DocTestSetup, :(using JuliaPythonAdapator); recursive=true)
+DocMeta.setdocmeta!(JuliaPythonAdaptor, :DocTestSetup, :(using JuliaPythonAdaptor); recursive=true)
 
 makedocs(;
-    modules=[JuliaPythonAdapator],
+    modules=[JuliaPythonAdaptor],
     authors="thautwarm <twshere@outlook.com> and contributors",
-    repo="https://github.com/thautwarm/JuliaPythonAdapator.jl/blob/{commit}{path}#{line}",
-    sitename="JuliaPythonAdapator.jl",
+    repo="https://github.com/thautwarm/JuliaPythonAdaptor.jl/blob/{commit}{path}#{line}",
+    sitename="JuliaPythonAdaptor.jl",
     format=Documenter.HTML(;
         prettyurls=get(ENV, "CI", "false") == "true",
-        canonical="https://thautwarm.github.io/JuliaPythonAdapator.jl",
+        canonical="https://thautwarm.github.io/JuliaPythonAdaptor.jl",
         edit_link="main",
         assets=String[],
     ),
@@ -20,6 +20,6 @@ makedocs(;
 )
 
 deploydocs(;
-    repo="github.com/thautwarm/JuliaPythonAdapator.jl",
+    repo="github.com/thautwarm/JuliaPythonAdaptor.jl",
     devbranch="main",
 )

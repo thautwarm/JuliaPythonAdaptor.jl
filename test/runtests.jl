@@ -1,6 +1,6 @@
-using JuliaPythonAdapator
+using JuliaPythonAdaptor
 using Test
 
-@testset "JuliaPythonAdapator.jl" begin
+@testset "JuliaPythonAdaptor.jl" begin
     # Write your tests here.
 end
