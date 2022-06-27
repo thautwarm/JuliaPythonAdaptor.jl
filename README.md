@@ -34,7 +34,7 @@ This project aims at providing a user-friendly approach to address all above iss
 
 2. Install a Python (3.7+) distribution. Add it to `$PATH` if you want to avoid manual configurations.
 
-3. For the Python distribution: `pip install https://github.com/thautwarm/JuliaPythonAdaptor` or `pip install JuliaPythonAdaptor`
+3. For the Python distribution: `pip install https://github.com/thautwarm/JuliaPythonAdaptor.jl` or `pip install JuliaPythonAdaptor`
 
    For the Julia distribution: `julia -e "using Pkg; Pkg.add(\"JSON\", \"JuliaPythonAdaptor\")"`
 
