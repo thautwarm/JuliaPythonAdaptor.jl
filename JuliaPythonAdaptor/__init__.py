@@ -32,7 +32,7 @@ def env_descriptor(varname):
             env = os.environ
         else:
             env = self._env
-        env[varname] = value 
+        env[varname] = value
 
     return set
 
@@ -45,17 +45,17 @@ class ENV:
     JP_ADAPTOR_JL_DEPOT_PATH: str
 
     JP_ADAPTOR_INITIALIZED: str
-    
+
     PYTHON_JULIAPKG_OFFLINE: str
     PYTHON_JULIAPKG_PROJECT: str
     PYTHON_JULIAPKG_EXE: str
-    
+
     JULIA_PYTHONCALL_PROJECT: str
     JULIA_PYTHONCALL_LIBPTR: str
     JULIA_PYTHONCALL_EXE: str
     JULIA_CONDAPKG_EXE: str
     JULIA_CONDAPKG_BACKEND: str
-    
+
     PYTHON_JULIACALL_SYSIMAGE: str
     PYTHON_JULIACALL_OPTIMIZE: str
     PYTHON_JULIACALL_COMPILE: str
@@ -90,10 +90,14 @@ def _setup():
         import subprocess
         import json
         config: dict[str, str] = json.loads(subprocess.check_output(['julia', '--compile=min', '--optimize=0', "-e", jl_info]).decode('utf-8').strip())
-        Environment.JP_ADAPTOR_JL_PROJ = config["project"]
-        Environment.JP_ADAPTOR_JL_IMAGE = config["sysimage"]
-        Environment.JP_ADAPTOR_JL_DEPOT_PATH = config["depot_path"]
         Environment.JP_ADAPTOR_JL_EXE = config["julia_exe"]
+
+        if not Environment.JP_ADAPTOR_JL_PROJ:
+            Environment.JP_ADAPTOR_JL_PROJ = config["project"]
+        if not Environment.JP_ADAPTOR_JL_IMAGE:
+            Environment.JP_ADAPTOR_JL_IMAGE = config["sysimage"]
+        if not Environment.JP_ADAPTOR_JL_DEPOT_PATH:
+            Environment.JP_ADAPTOR_JL_DEPOT_PATH = config["depot_path"]
 
     # setup JuliaCall required environment variables
     if Environment.JP_ADAPTOR_JL_EXE:
@@ -102,7 +106,7 @@ def _setup():
         Environment.JULIA_PYTHONCALL_PROJECT = Environment.PYTHON_JULIAPKG_PROJECT = Environment.JP_ADAPTOR_JL_PROJ
     if Environment.JP_ADAPTOR_JL_IMAGE:
         Environment.PYTHON_JULIACALL_SYSIMAGE = Environment.JP_ADAPTOR_JL_IMAGE
-    
+
 
     # setup PythonCall required environment variables
     # not necessary because 'JULIA_PYTHONCALL_LIBPTR' is set
@@ -111,7 +115,7 @@ def _setup():
         Environment.JULIA_CONDAPKG_EXE = cond_path
         Environment.JULIA_CONDAPKG_BACKEND = "System"
         Environment.add_path(os.path.dirname(cond_path))
-    
+
     if Environment.JP_ADAPTOR_PY_EXE:
         py_path = Environment.JP_ADAPTOR_PY_EXE
         Environment.JULIA_PYTHONCALL_EXE = py_path
