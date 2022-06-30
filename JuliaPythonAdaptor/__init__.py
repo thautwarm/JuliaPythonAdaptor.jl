@@ -89,7 +89,7 @@ def _setup():
     if not Environment.JP_ADAPTOR_JL_EXE:
         import subprocess
         import json
-        config: dict[str, str] = json.loads(subprocess.check_output(['julia', '--compile=min', '--optimize=0', "-e", jl_info]).decode('utf-8').strip())
+        config: dict[str, str] = json.loads(subprocess.check_output(['julia', '--startup-file=no', '--compile=min', '-O0', "-e", jl_info]).decode('utf-8').strip())
         Environment.JP_ADAPTOR_JL_EXE = config["julia_exe"]
 
         if not Environment.JP_ADAPTOR_JL_PROJ:
