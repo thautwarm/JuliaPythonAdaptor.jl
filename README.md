@@ -4,7 +4,7 @@
 
 The Julia programs using JuliaPythonAdaptor can be compiled by `PackageCompiler` into [sysimages](https://julialang.github.io/PackageCompiler.jl/stable/sysimages.html) or [executables](https://julialang.github.io/PackageCompiler.jl/stable/apps.html) that will work on another machine, if binary-compatible.
 
-Note that your Python binaries are NOT bundled in the compiled julia files. You should also provide a property Python environment for the target machines.
+Note that your Python binaries are NOT bundled in the compiled julia files. You should also provide a proper Python environment for the target machines.
 
 ## Motivation
 
