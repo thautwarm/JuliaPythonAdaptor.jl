@@ -50,6 +50,7 @@ For relocatability, you might add the following environment variables:
 | JP_ADAPTOR_JL_IMAGE | the Julia Sysimage that will be used | decided by the `julia` program  |
 | JP_ADAPTOR_JL_DEPOT_PATH | deciding `JULIA_DEPOT_PATH` | decided by the `julia` program |
 
+### REPL
 
 Then, if you call Python from Julia, `import JuliaPythonAdaptor` before you import `PythonCall`. If you call Julia from Python, `import JuliaPythonAdaptor` before you import `juliacall`.
 
@@ -64,6 +65,16 @@ catch e
 end
 ```
 
+### Sysimages or Apps
+
+Tentatively, the package `JuliaPythonAdaptor.jl` does not work due to some julia internals. You can use `pip` to install the Python package `JuliaPythonAdaptor` to setup correct environment and call your sysimage or app:   
+
+```bash
+# sysimage
+python -c "import JuliaPythonAdaptor;import os;del os.environ['JULIA_PYTHONCALL_LIBPTR'];os.system('app-with-pythoncall.exe')"
+# app
+python -c "import JuliaPythonAdaptor;import os;del os.environ['JULIA_PYTHONCALL_LIBPTR'];os.system('julia -Jsys-with-pythoncall.dll')"
+```
 
 ## I use PyCall, how to use this package?
 
