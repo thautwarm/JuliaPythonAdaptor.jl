@@ -46,12 +46,23 @@ For relocatability, you might add the following environment variables:
 |---|---|---|
 | JP_ADAPTOR_PY_EXE  | the Python executable path  | `python` found in `$PATH`  |
 | JP_ADAPTOR_JL_EXE  | the Julia executable path  | `julia` found in `$PATH`  |
-|  JP_ADAPTOR_JL_PROJ | the Julia project that will be activated  | the global Julia project  |
+| JP_ADAPTOR_JL_PROJ | the Julia project that will be activated  | the global Julia project  |
 | JP_ADAPTOR_JL_IMAGE | the Julia Sysimage that will be used | decided by the `julia` program  |
 | JP_ADAPTOR_JL_DEPOT_PATH | deciding `JULIA_DEPOT_PATH` | decided by the `julia` program |
 
 
 Then, if you call Python from Julia, `import JuliaPythonAdaptor` before you import `PythonCall`. If you call Julia from Python, `import JuliaPythonAdaptor` before you import `juliacall`.
+
+P.S: Due to [this issue](https://github.com/JuliaLang/julia/issues/45888), tentatively you have to `import JuliaPythonAdaptor` in `.julia/config/startup.jl` for loading precompiled packages that use PythonCall:
+
+```julia
+# $JULIA_DEPOT_PATH/config/startup.jl
+try
+   @eval import JuliaPythonAdaptor
+catch e
+   @warn "Error initializing JuliaPythonAdaptor" exception=(e, catch_backtrace())
+end
+```
 
 
 ## I use PyCall, how to use this package?
