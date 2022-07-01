@@ -4,7 +4,7 @@ import Pkg
 @nospecialize
 
 if isdefined(Base, :Experimental) && isdefined(Base.Experimental, Symbol("@compiler_options"))
-    Base.Experimental.@compiler_options optimize=0 compile=min infer=no
+    @eval Base.Experimental.@compiler_options optimize=0 compile=min infer=no
 end
 
 function setenv!(varname::String, value::AbstractString)
